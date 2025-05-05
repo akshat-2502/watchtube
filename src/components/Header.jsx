@@ -9,25 +9,25 @@ const Header = () => {
   return (
     <div className="shadow-lg flex w-full  justify-between px-5 py-3 items-center">
       <div className="flex items-center gap-4 w-1/4 ">
-        <IconContext.Provider value={{ className: "shared-class", size: 25 }}>
+        <IconContext.Provider value={{ className: "shared-class", size: 26 }}>
           <RxHamburgerMenu />
         </IconContext.Provider>
-        <img className="w-36" src="/Images/watchtube.png" alt="" />
+        <img className="w-38" src="/Images/watchtube.png" alt="" />
       </div>
-      <div className="w-1/2   items-center flex justify-center">
-        <div className="w-3/4 border-1 overflow-hidden border-zinc-700 flex items-center rounded-full">
+      <div className="w-1/2 items-center flex justify-center">
+        <div className="w-3/4 flex items-center">
           <input
-            className="w-[85%] px-3 py-1 outline-none"
+            className="w-[85%] px-3 py-1 rounded-l-full border-1 border-zinc-500 border-r-white outline-none"
             type="text"
             placeholder="Search"
           />
-          <button className="bg-zinc-200 hover:bg-zinc-300 pl-8 pr-9 py-1 ">
-            <CiSearch className="w-6 h-6" />
+          <button className="bg-zinc-100 rounded-r-full border-1 border-zinc-500 hover:bg-zinc-300 px-4 py-2">
+            <CiSearch className="w-4 h-4" />
           </button>
         </div>
       </div>
       <div className="w-1/4 flex justify-end">
-        <IconContext.Provider value={{ className: "shared-class", size: 25 }}>
+        <IconContext.Provider value={{ className: "shared-class", size: 26 }}>
           <FaUserAlt />
         </IconContext.Provider>
       </div>
