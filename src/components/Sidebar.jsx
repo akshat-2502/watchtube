@@ -17,6 +17,7 @@ import {
   MdSportsBasketball,
 } from "../utils/iconsPack";
 import { HiRocketLaunch } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -27,9 +28,11 @@ const Sidebar = () => {
   return (
     <div className="py-5 px-6 w-56 shadow-md  h-screen">
       <ul>
-        <li className="px-2 py-2 font-medium text-lg flex items-center gap-7">
-          <AiFillHome />
-          Home
+        <li className="px-2 py-2 font-medium text-lg">
+          <Link className="flex gap-7 items-center" to={"/"}>
+            <AiFillHome />
+            Home
+          </Link>
         </li>
         <li className="px-2 py-2 font-medium text-lg flex items-center gap-7">
           <SiYoutubeshorts />
