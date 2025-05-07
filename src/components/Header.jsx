@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaUserAlt } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
-
+import { cacheResults } from "../utils/searchSlice";
 import { IconContext } from "react-icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SUGGESSTION_API } from "../utils/constant";
 
@@ -12,10 +12,17 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggesstion, setSuggesstion] = useState([]);
   const [showSuggesstion, setShowSuggesstion] = useState(false);
+  const searchCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
   //debouncing - making an api call after specific time
   useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggesstion(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggesstion(searchCache[searchQuery]);
+      } else {
+        getSearchSuggesstion();
+      }
+    }, 200);
 
     return () => {
       //return is called if a useffect is again rerendering or reloading
@@ -27,6 +34,12 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SUGGESSTION_API + searchQuery);
     const json = await data.json();
     setSuggesstion(json[1]);
+    //update cache
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+      })
+    );
   };
 
   const toggleMenuHandler = () => {
@@ -60,7 +73,7 @@ const Header = () => {
             </button>
           </div>
           {showSuggesstion && (
-            <div className="fixed w-[443px] rounded-lg border-l-1 border-r-1 border-b-1 bg-white border-zinc-400 mt-1">
+            <div className="absolute w-[443px] rounded-lg border-l-1 border-r-1 border-b-1 bg-white border-zinc-400 mt-1">
               <ul>
                 {suggesstion.map((s) => (
                   <li
