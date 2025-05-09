@@ -4,3 +4,5 @@ export const YOUTUBE_VIDEO_API =
 
 export const YOUTUBE_SUGGESSTION_API =
   "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const LIVE_CHAT_COUNTER = 25;
