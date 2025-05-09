@@ -22,7 +22,7 @@ const LiveChat = () => {
     return () => clearInterval(i);
   }, []);
   return (
-    <div className="border-1 bg-gray-100 border-gray-300 w-full h-[500px] overflow-y-scroll">
+    <div className="border-1 bg-gray-100 border-gray-300 w-full h-[500px] overflow-y-scroll flex flex-col-reverse">
       {chatMessages.map((c, index) => (
         <ChatMessage key={index} name={c.name} message={c.message} />
       ))}
