@@ -10,6 +10,7 @@ const chatSlice = createSlice({
     addMessage: (state, action) => {
       state.messages.splice(LIVE_CHAT_COUNTER, 1);
       state.messages.unshift(action.payload);
+      console.log("hello");
     },
   },
 });
