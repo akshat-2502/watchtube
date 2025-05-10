@@ -35,6 +35,13 @@ const LiveChat = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            dispatch(
+              addMessage({
+                name: "Akshat Khulbe",
+                message: liveMessage,
+              })
+            );
+            setLiveMessage("");
           }}
           className="flex items-center"
         >
