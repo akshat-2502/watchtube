@@ -17,8 +17,6 @@ const VideoContainer = () => {
     setVideo(json.items);
   };
 
-  if (!videos) return null;
-
   return (
     <div className="flex flex-wrap ">
       {videos.map((video) => (
